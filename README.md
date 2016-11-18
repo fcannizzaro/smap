@@ -40,3 +40,15 @@ put pair
 ### void mapPut(_map* map,char\* key, void\* value)
 put key value pair
 
+## Size
+
+### map->size
+number of pairs
+
+## Extra
+
+### char** keys(_map* map);
+array of keys
+
+### void** values(_map* map);
+array of values

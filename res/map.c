@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
+#include<stdbool.h>
 #include<string.h>
 #include "map.h"
 
@@ -11,15 +12,30 @@ _pair * _mapGet(_pair * pair, char * key){
 // create Map Struct
 _map * newMap(){
 	_map * map = malloc(sizeof(_map));
+	map->size = 0;
 	map->items = NULL;
 	return map;
 }
 
-// create Pair Struct
+_map * newMapFill(_pair * pair){
+	_map * map = newMap();
+	mapPutPair(map,pair);
+	return map;
+}
+
+// create a Pair Struct
 _pair * newPair(char * key, void* value){
 	_pair * pair = malloc(sizeof(_pair));
 	pair->key = key;
 	pair->value = value;
+	return pair;
+}
+
+// create an Int Pair Struct
+_pair * newIntPair(char * key, int value){
+	_pair * pair = malloc(sizeof(_pair));
+	pair->key = key;
+	pair->nvalue = value;
 	return pair;
 }
 
@@ -35,17 +51,42 @@ _pair * mapGetPair(_map * map, char * key){
 }
 
 // map put pair [pair]
-void mapPutPair(_map* map,_pair* pair){
-	if(!pair) return;
-	mapPut(map,pair->key,pair->value);
+_map * mapPutPair(_map* map,_pair* pair){
+	return !pair ? map : mapPut(map,pair->key,pair->value);
 }
 
 // map put pair [key,value]
-void mapPut(_map * map, char * key, void * value){
+_map * mapPut(_map * map, char * key, void * value){
 	_pair * pair = malloc(sizeof(_pair));
 	pair->key = key;
 	pair->value = value;
 	pair->next = map->items;
-	map->items = pair;	
+	map->items = pair;
+	map->size++;
+	return map;
 }
 
+// array of keys
+char** mapKeys(_map*map){
+	
+	int i = 0;
+	char * keys[map->size];
+	_pair * item = map->items;
+
+	while( (item = item->next) )
+		keys[i++] = item->key;
+		
+}
+
+// array of values
+void** mapValues(_map*map){
+	
+	int i = 0;
+	void* values[map->size];
+
+	_pair * item = map->items;
+
+	while( (item = item->next) )
+		values[i++] = item->value;
+		
+}
