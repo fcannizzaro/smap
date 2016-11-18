@@ -16,7 +16,7 @@ _map * newMap(){
 }
 
 // create Pair Struct
-_pair * newPair(char * key, char * value){
+_pair * newPair(char * key, void* value){
 	_pair * pair = malloc(sizeof(_pair));
 	pair->key = key;
 	pair->value = value;
@@ -25,7 +25,7 @@ _pair * newPair(char * key, char * value){
 
 // get value by key
 void* mapGet(_map * map, char * key){
-	pair * obj = _mapGet(map->items,key);
+	_pair * obj = _mapGet(map->items,key);
 	return obj ? obj->value : NULL;
 }
 

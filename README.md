@@ -1,6 +1,21 @@
 # smap
 Simple C Map Implementation
 
+## Usage
+```C
+
+_map * map = newMap();
+
+// put
+mapPut(map,"username","fcannizzaro");
+
+// get
+char* username = mapGet(map,"username");
+
+printf(" >> Username is %s", username);
+
+```
+
 ## Constructor
 
 ### _map* newMap()
