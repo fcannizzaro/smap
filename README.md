@@ -24,6 +24,9 @@ create Map Struct
 ### _pair* newPair(char* key, void* value)
 create Pair Struct
 
+### _pair* newIntPair(char* key, int value)
+create Int Pair Struct
+
 ## Get
 
 ### pair* mapGetPair(_map* map, char\* key)
