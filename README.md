@@ -19,9 +19,9 @@ get value by key
 
 ## Put
 
-### pair* mapPutPair(_map* map, \_pair\* pair)
+### void mapPutPair(_map* map, \_pair\* pair)
 put pair
 
-### void* mapPut(_map* map,char\* key, void\* value)
+### void mapPut(_map* map,char\* key, void\* value)
 put key value pair
 
