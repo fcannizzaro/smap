@@ -11,6 +11,16 @@ int main(){
 	// get
 	char* username = mapGet(map,"username");
 
-	printf(" >> Username is %s", username);
+	printf(" >> Username is %s\n", username);
+
+	char** keys = mapKeys(map);
+	void** values = mapValues(map);
+
+	for (int i = 0; i < map->size; i++)
+		printf(" > %s\n", keys[i]);
+
+	for (int i = 0; i < map->size; i++)
+		printf(" > %s\n", values[i]);
+	
 
 }

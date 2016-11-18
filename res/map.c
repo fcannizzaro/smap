@@ -70,23 +70,29 @@ _map * mapPut(_map * map, char * key, void * value){
 char** mapKeys(_map*map){
 	
 	int i = 0;
-	char * keys[map->size];
+	char** keys = malloc(map->size * sizeof(char*));
 	_pair * item = map->items;
 
-	while( (item = item->next) )
-		keys[i++] = item->key;
-		
+	while( item){
+		keys[i++] = strdup(item->key);
+		item = item->next;
+	}
+	
+	return keys;
 }
 
 // array of values
 void** mapValues(_map*map){
 	
 	int i = 0;
-	void* values[map->size];
-
+	void** values = malloc(map->size * sizeof(void*));
 	_pair * item = map->items;
 
-	while( (item = item->next) )
-		values[i++] = item->value;
-		
+	while( item){
+		values[i++] = strdup(item->value);
+		item = item->next;
+	}
+	
+	return values;
+
 }
